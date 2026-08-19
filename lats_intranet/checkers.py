@@ -1129,13 +1129,13 @@ def check_lats(fn):
     except Exception as e:
         bad("it raised %s: %s" % (type(e).__name__, e))
         hint("a 🎯 gap is probably still a bare `...`, either this one or one above it")
-        return report("Exercise0, the whole search", False)
+        return report("Exercise, the whole search", False)
     finally:
         _restore(real)
 
     if not seen:
         bad("none of the six operations was called, so the gap is still empty")
-        return report("Exercise0, the whole search", False)
+        return report("Exercise, the whole search", False)
 
     order = [row["name"] for row in seen]
 
@@ -1146,7 +1146,7 @@ def check_lats(fn):
             % (len(starts), "" if len(starts) == 1 else "s"))
         hint("the loop is `for attempt in range(n_attempts)`, and every attempt begins with "
              "one descend from the root")
-        return report("Exercise0, the whole search", False)
+        return report("Exercise, the whole search", False)
     root = seen[starts[0]]["args"][0]
     if seen[starts[1]]["args"][0] is not root:
         bad("the second attempt descended from a different node")
@@ -1276,4 +1276,4 @@ def check_lats(fn):
 
     # Deliberately NOT checked anywhere above: what any of this SCORES on the real
     # model. That is a fact about the model, not about your eleven lines.
-    return report("Exercise0, the whole search", passed)
+    return report("Exercise, the whole search", passed)
