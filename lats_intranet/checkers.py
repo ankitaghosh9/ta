@@ -102,17 +102,17 @@ def check_greedy(fn):
     got = fn(0)
     if not isinstance(got, dict):
         bad("it returned %r, and the last line hands back a dictionary" % (got,))
-        return report("Exercise 1, the greedy agent", False)
+        return report("Exercise, the greedy agent", False)
     for key in ("trajectory", "answer", "reward", "calls"):
         if key not in got:
             bad("what it returned has no %r in it" % key)
-            return report("Exercise 1, the greedy agent", False)
+            return report("Exercise, the greedy agent", False)
 
     if not got["trajectory"]:
         bad("it played no actions at all, so the gap is still empty")
         hint("step(state, action) plays one action and hands back the state it reached. "
              "Without keeping that state the loop never moves and never ends")
-        return report("Exercise 1, the greedy agent", False)
+        return report("Exercise, the greedy agent", False)
     ok("it played %d actions" % len(got["trajectory"]))
 
     # The trajectory has to BE what happened. Replaying it in a fresh episode is the
@@ -163,7 +163,7 @@ def check_greedy(fn):
         passed = False
     else:
         ok("it counted its model calls, %d of them" % got["calls"])
-    return report("Exercise 1, the greedy agent", passed)
+    return report("Exercise, the greedy agent", passed)
 
 
 # --- exercise checker (notebook cell 25) ---
@@ -185,7 +185,7 @@ def check_node(cls):
             bad("a fresh Node has no attribute `%s`" % field)
             hint("__init__ sets seven things: state, parent, action, children, N, V, "
                  "eval_value")
-            return report("Exercise 2, the Node class", False)
+            return report("Exercise, the Node class", False)
         got = getattr(root, field)
         if field == "N" and got != 1:
             bad("a fresh Node has N = %r, it should be 1" % got)
@@ -234,7 +234,7 @@ def check_node(cls):
     got = child.UCT(W)
     if not _number(got):
         bad("UCT returned %r, so the gap is still empty" % (got,))
-        return report("Exercise 2, the Node class", False)
+        return report("Exercise, the Node class", False)
     want = 0.6 + 1.0 * math.sqrt(math.log(100) / 25)
     if abs(got - want) > 1e-6:
         bad("with V = 0.600, N = 25 and parent.N = 100 you got %.6f, expected %.6f"
@@ -284,7 +284,7 @@ def check_node(cls):
         passed = False
     else:
         ok("between equal V, the less visited child scores higher")
-    return report("Exercise 2, the Node class", passed)
+    return report("Exercise, the Node class", passed)
 
 
 # --- exercise checker (notebook cell 31) ---
@@ -351,7 +351,7 @@ def check_compute_V(fn):
         bad("compute_V returned %r, so the gap is still empty" % (got,))
         hint("V(s) = lam LM(s) + (1 - lam) SC(s), and the two names above the gap "
              "already hold LM(s) and SC(s)")
-        return report("Exercise 3, the value blend V(s)", False)
+        return report("Exercise, the value blend V(s)", False)
 
     want = 0.5 * 0.8 + 0.5 * 0.75                     # 0.775
     if abs(got - want) > 1e-9:
@@ -376,7 +376,7 @@ def check_compute_V(fn):
         bad("compute_V(node, lam=0.8) raised TypeError: %s" % e)
         hint("keep the signature compute_V(self, mem=None, lam=LAM), so that lam can be "
              "turned up and down")
-        return report("Exercise 3, the value blend V(s)", False)
+        return report("Exercise, the value blend V(s)", False)
     want8 = 0.8 * 0.8 + 0.2 * 0.75                    # 0.790
     if abs(got8 - want8) > 1e-9:
         bad("at lam = 0.8 you got %.4f, expected %.4f" % (got8, want8))
@@ -443,7 +443,7 @@ def check_compute_V(fn):
     print("    LM(s) = %.3f   SC(s) = %.3f   V(s) = %.3f"
           % (LM.value(live.state), self_consistency(live.state), v))
     print("    (that page has four rows and the question names none of them)")
-    return report("Exercise 3, the value blend V(s)", passed)
+    return report("Exercise, the value blend V(s)", passed)
 
 
 # --- exercise checker (notebook cell 35) ---
@@ -470,11 +470,11 @@ def check_best_child(fn):
     got = fn(parent, W)
     if got is Ellipsis or got is None:
         bad("it returned %r, so the gap is still empty" % (got,))
-        return report("Exercise 4, best_child_by_uct", False)
+        return report("Exercise, best_child_by_uct", False)
     if got not in parent.children:
         bad("it returned something that is not one of s.children")
         hint("return the child itself, not its score")
-        return report("Exercise 4, best_child_by_uct", False)
+        return report("Exercise, best_child_by_uct", False)
 
     scores = [c.UCT(W) for c in parent.children]
     best = parent.children[scores.index(max(scores))]
@@ -519,7 +519,7 @@ def check_best_child(fn):
         passed = False
     else:
         ok("survives two negative UCT scores")
-    return report("Exercise 4, best_child_by_uct", passed)
+    return report("Exercise, best_child_by_uct", passed)
 
 
 def check_descend(fn):
@@ -536,12 +536,12 @@ def check_descend(fn):
         hint("the condition is `len(s.children) > 0`. While the gap is still `...` the "
              "condition is Ellipsis, which is truthy, so it descends unconditionally and "
              "asks for the best child of a node that has none")
-        return report("Exercise 5, descend", False)
+        return report("Exercise, descend", False)
     if landed is not bare:
         bad("a node with no children should be returned unchanged: it is exactly the "
             "node that still has to be expanded")
         hint("the whole condition is `len(s.children) > 0`")
-        return report("Exercise 5, descend", False)
+        return report("Exercise, descend", False)
     ok("stops at a node that has not been expanded yet")
 
     # One level down.
@@ -594,7 +594,7 @@ def check_descend(fn):
         passed = False
     else:
         ok("returns a finished trajectory unchanged, with no extra clause needed")
-    return report("Exercise 5, descend", passed)
+    return report("Exercise, descend", passed)
 
 
 # --- exercise checker (notebook cell 43) ---
@@ -641,11 +641,11 @@ def _check_expand_body(fn):
         hint("the gap is probably still `...`. step(s.state, action) hands back exactly "
              "the four things the line expects: the new state, the reward, whether the "
              "episode ended, and an info dictionary")
-        return report("Exercise 6, expansion", False)
+        return report("Exercise, expansion", False)
     if not node.children:
         bad("expand built no children at all, so the gap is still empty")
         hint("propose_actions(s.state, n_actions, mem) hands back the actions")
-        return report("Exercise 6, expansion", False)
+        return report("Exercise, expansion", False)
     if len(node.children) != 3:
         bad("the policy proposed 3 legal actions and you built %s"
             % _kids(len(node.children)))
@@ -803,7 +803,7 @@ def _check_expand_body(fn):
         break
     else:
         ok("(no state found where a sample and a ranking differ, so untested)")
-    return report("Exercise 6, expansion", passed)
+    return report("Exercise, expansion", passed)
 
 
 # --- exercise checker (notebook cell 48) ---
@@ -834,11 +834,11 @@ def check_simulate(fn):
         bad("it returned %r, so the gap is still empty" % (got,))
         hint("simulate RETURNS the node it stopped on, and every branch has to return "
              "something")
-        return report("Exercise 7, simulation", False)
+        return report("Exercise, simulation", False)
     if not hasattr(got, "state"):
         bad("it returned %r, which is not a Node" % (got,))
         hint("return the node, not its state and not the reward")
-        return report("Exercise 7, simulation", False)
+        return report("Exercise, simulation", False)
     if not is_terminal(got.state):
         bad("it stopped on a node that is not terminal")
         hint("keep walking while there is somewhere to walk: the last line is "
@@ -907,7 +907,7 @@ def check_simulate(fn):
     # Deliberately NOT checked: what the walk scores on the real model. That is a fact
     # about the model, not about your six lines, and a real model is entitled to a
     # different answer than a stub.
-    return report("Exercise 7, simulation", passed)
+    return report("Exercise, simulation", passed)
 
 
 # --- exercise checker (notebook cell 52) ---
@@ -927,7 +927,7 @@ def check_backprop(fn):
     if root.N == 1 and mid.N == 1:
         bad("nothing above the leaf changed, so it never walked up")
         hint("recurse on node.parent while it is not None")
-        return report("Exercise 8, backpropagation", False)
+        return report("Exercise, backpropagation", False)
 
     counted = True
     for name, node in named:
@@ -1002,9 +1002,9 @@ def check_backprop(fn):
     except AttributeError:
         bad("it crashed on a node with no parent")
         hint("recurse only `if node.parent is not None`")
-        return report("Exercise 8, backpropagation", False)
+        return report("Exercise, backpropagation", False)
     ok("it stops cleanly at the root")
-    return report("Exercise 8, backpropagation", passed)
+    return report("Exercise, backpropagation", passed)
 
 
 def check_reflect(fn):
@@ -1028,11 +1028,11 @@ def check_reflect(fn):
         bad("nothing was written: mem.notes is still empty")
         hint("ask the frozen model for the sentence with LM.reflect(...), then hand it "
              "to mem.add(note, leaf.state, r)")
-        return report("Exercise 9, reflection", False)
+        return report("Exercise, reflection", False)
     note = mem.notes[0]
     if not isinstance(note, str) or not note.strip():
         bad("what was filed is %r, which is not a sentence" % (note,))
-        return report("Exercise 9, reflection", False)
+        return report("Exercise, reflection", False)
     ok("it wrote a note, %d characters of it" % len(note))
 
     # The trajectory has to reach the critic. A reflection on one state cannot say what
@@ -1104,7 +1104,7 @@ def check_reflect(fn):
     # NOT checked: what the sentence SAYS. A real model writes prose and is free to
     # write it however it likes, so a checker that insisted on the failed answer
     # appearing verbatim would be grading the model rather than your code.
-    return report("Exercise 9, reflection", passed)
+    return report("Exercise, reflection", passed)
 
 
 # --- exercise checker (notebook cell 61) ---
@@ -1129,13 +1129,13 @@ def check_lats(fn):
     except Exception as e:
         bad("it raised %s: %s" % (type(e).__name__, e))
         hint("a 🎯 gap is probably still a bare `...`, either this one or one above it")
-        return report("Exercise 10, the whole search", False)
+        return report("Exercise0, the whole search", False)
     finally:
         _restore(real)
 
     if not seen:
         bad("none of the six operations was called, so the gap is still empty")
-        return report("Exercise 10, the whole search", False)
+        return report("Exercise0, the whole search", False)
 
     order = [row["name"] for row in seen]
 
@@ -1146,7 +1146,7 @@ def check_lats(fn):
             % (len(starts), "" if len(starts) == 1 else "s"))
         hint("the loop is `for attempt in range(n_attempts)`, and every attempt begins with "
              "one descend from the root")
-        return report("Exercise 10, the whole search", False)
+        return report("Exercise0, the whole search", False)
     root = seen[starts[0]]["args"][0]
     if seen[starts[1]]["args"][0] is not root:
         bad("the second attempt descended from a different node")
@@ -1276,4 +1276,4 @@ def check_lats(fn):
 
     # Deliberately NOT checked anywhere above: what any of this SCORES on the real
     # model. That is a fact about the model, not about your eleven lines.
-    return report("Exercise 10, the whole search", passed)
+    return report("Exercise0, the whole search", passed)
