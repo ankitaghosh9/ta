@@ -95,7 +95,7 @@ except Exception as exc:              # noqa: BLE001, any import failure is one 
 # that belong to a real model live here.
 # ===========================================================================
 
-MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"     # public, no token, about 6 GB in fp16.
+MODEL_ID = "Qwen/Qwen2.5-3B-Instruct"     # public, no token, about 6 GB in fp16.
 # 0.5B was measured on 2026-08-12 and scored 0.200 on five questions, identical across
 # every ablation INCLUDING the fully blinded one, and at the 0.220 blind guess line. It
 # contributed no usable signal, so the search was not searching. 3B is the next rung that
