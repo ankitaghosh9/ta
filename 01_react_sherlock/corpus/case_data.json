@@ -272,7 +272,7 @@
     }
   },
   "ground_truth": {
-    "culprit": "charlie",
+    "culprit": "Charlie",
     "motive": "Bribed by a competitor RedCrest Robotics; low pay and resentment over being overlooked.",
     "method": "Between 12:30 AM and 2:00 AM, used master keycard access to copy prototype files (file transfer at 00:47)."
   }
