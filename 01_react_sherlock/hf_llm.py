@@ -7,7 +7,7 @@ import re
 from dataclasses import dataclass
 from typing import Any, Callable, Dict, List, Optional, Tuple
 
-MODEL_ID = "Qwen/Qwen2.5-0.5B-Instruct"
+MODEL_ID = "Qwen/Qwen2.5-3B-Instruct"
 MAX_NEW_TOKENS = 300
 REACT_MAX_STEPS = 10
 
