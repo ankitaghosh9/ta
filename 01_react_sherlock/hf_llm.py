@@ -15,7 +15,7 @@ TOOL_DESCRIPTIONS = """
 - query_server_logs(time_window): credentials that accessed servers in a 4-hour slot (e.g. "00:00-04:00", "20:00-00:00")
 - check_badge_swipes(time): who is still badge-IN / on premises at HH:MM (e.g. "01:00")
 - inspect_work_emails(employee_name): flagged keywords from recent work emails
-- check_bank_records(employee_name): returns monthly wage, monthly deposit, monthly withdraw (numbers) and flagged transaction (string)
+- check_bank_records(employee_name): monthly wage vs deposit/withdraw and any flagged wire (motive evidence)
 """
 
 KNOWN_TOOLS = (
@@ -24,6 +24,22 @@ KNOWN_TOOLS = (
     "inspect_work_emails",
     "check_bank_records",
 )
+
+INVESTIGATION_POLICY = """
+Investigation checklist (complete before accusing):
+1. check_badge_swipes at a time inside the breach window (e.g. 01:00)
+2. query_server_logs with a valid 4-hour slot only — theft window maps to "00:00-04:00"
+   (never pass "00:30-02:00"; that is not a log slot)
+3. inspect_work_emails for your leading suspect(s)
+4. check_bank_records for your leading suspect(s) — compare deposit to wage; note flagged wires
+5. Only then give Final Answer
+
+Evidence rules:
+- Do NOT Final Answer until check_bank_records appears in the investigation log.
+- Self-serving emails ("no unauthorized access") are NOT exoneration; still check bank motive.
+- Prefer hard evidence (badge + suspicious server action + financial anomaly) over role stereotypes.
+- Final Thought must CONFIRM the accusation in one short sentence citing opportunity, action, and motive.
+"""
 
 REACT_FORMAT = """
 Respond with exactly ONE of these formats per turn — never both.
@@ -162,9 +178,8 @@ def build_sherlock_system_prompt() -> str:
         "(or Final Answer when done). Never both. Never invent Observations.\n"
         "Available tools:\n"
         f"{TOOL_DESCRIPTIONS}\n"
+        f"{INVESTIGATION_POLICY}\n"
         f"{REACT_FORMAT}"
-        "Start by checking who was active in the breach window, then cross-check "
-        "badge swipes, emails, and bank records before accusing."
     )
 
 
