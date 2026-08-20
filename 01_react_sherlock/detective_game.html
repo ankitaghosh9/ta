@@ -406,14 +406,14 @@
             <span class="icon">🪪</span>
             <div>
               <h3>Badge Swipes</h3>
-              <code>check_badge_swipes(employee_name)</code>
+              <code>check_badge_swipes(time)</code>
             </div>
           </div>
           <div class="tool-body">
-            <label for="badge-input">Employee name</label>
+            <label for="badge-input">Time (HH:MM)</label>
             <div class="input-row">
-              <select id="badge-input"></select>
-              <button type="button" onclick="runTool('badge')">Check Swipes</button>
+              <input id="badge-input" type="text" placeholder="e.g. 01:00" value="01:00" />
+              <button type="button" onclick="runTool('badge')">Who Is On Site</button>
             </div>
             <div id="badge-output" class="output-box empty">Observation will appear here…</div>
           </div>
@@ -636,7 +636,7 @@
         grid.appendChild(card);
       });
 
-      ["badge-input", "email-input", "bank-input", "verdict-select"].forEach(id => {
+      ["email-input", "bank-input", "verdict-select"].forEach(id => {
         const el = document.getElementById(id);
         SUSPECT_NAMES.forEach(name => {
           const opt = document.createElement("option");
@@ -659,11 +659,49 @@
       return logs;
     }
 
-    function checkBadgeSwipes(name) {
-      const n = normalizeName(name);
-      const swipes = CASE.badge_swipes[n];
-      if (!swipes) return { error: `Unknown employee "${name}". Choose: ${SUSPECT_NAMES.join(", ")}` };
-      return swipes;
+    function hhmmToMinutes(timeStr) {
+      const parts = String(timeStr).trim().split(":");
+      if (parts.length !== 2) throw new Error("bad format");
+      const hour = Number(parts[0]);
+      const minute = Number(parts[1]);
+      if (!Number.isInteger(hour) || !Number.isInteger(minute) ||
+          hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+        throw new Error("out of range");
+      }
+      return hour * 60 + minute;
+    }
+
+    function checkBadgeSwipes(time) {
+      let query;
+      try {
+        query = hhmmToMinutes(time);
+      } catch (e) {
+        return {
+          error: `Invalid time "${time}". Use HH:MM, e.g. "01:00".`,
+          hint: "Try a time inside the breach window 00:30-02:00."
+        };
+      }
+
+      const active = [];
+      for (const [name, events] of Object.entries(CASE.badge_swipes)) {
+        let inT = null, outT = null;
+        for (const event of events) {
+          const bits = event.split(/\s+/);
+          if (bits.length !== 2) continue;
+          const stamp = bits[0];
+          const kind = bits[1].toUpperCase();
+          if (kind === "IN") inT = hhmmToMinutes(stamp);
+          else if (kind === "OUT") outT = hhmmToMinutes(stamp);
+        }
+        if (inT === null || outT === null) continue;
+        const onSite = (inT <= outT)
+          ? (inT <= query && query < outT)
+          : (query >= inT || query < outT);
+        if (onSite) {
+          active.push(name.charAt(0).toUpperCase() + name.slice(1));
+        }
+      }
+      return active;
     }
 
     function inspectWorkEmails(name) {
@@ -730,10 +768,10 @@
           break;
         case "badge":
           action = "check_badge_swipes";
-          input = document.getElementById("badge-input").value;
+          input = document.getElementById("badge-input").value.trim();
           result = checkBadgeSwipes(input);
           outputId = "badge-output";
-          isError = !!result.error;
+          isError = !!(result && result.error);
           break;
         case "email":
           action = "inspect_work_emails";

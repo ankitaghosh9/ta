@@ -13,7 +13,7 @@ REACT_MAX_STEPS = 10
 
 TOOL_DESCRIPTIONS = """
 - query_server_logs(time_window): credentials that accessed servers in a 4-hour slot (e.g. "00:00-04:00", "20:00-00:00")
-- check_badge_swipes(employee_name): physical entry/exit times for an employee (e.g. "Charlie")
+- check_badge_swipes(time): who is still badge-IN / on premises at HH:MM (e.g. "01:00")
 - inspect_work_emails(employee_name): flagged keywords from recent work emails
 - check_bank_records(employee_name): returns monthly wage, monthly deposit, monthly withdraw (numbers) and flagged transaction (string)
 """
@@ -32,7 +32,7 @@ Never invent Observations; wait for the next message after a tool call.
 To use a tool (one call only, then STOP):
 Thought: <your reasoning>
 Action: <exact lowercase tool name>
-Action Input: <plain string, e.g. Charlie or 00:00-04:00>
+Action Input: <plain string, e.g. 01:00 or 00:00-04:00 or Charlie>
 
 When you have enough evidence from Observations already in the log:
 Thought: <your final reasoning>

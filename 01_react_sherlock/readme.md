@@ -48,7 +48,7 @@ Instead of guessing, Sherlock must use the **Thought $\rightarrow$ Action $\righ
 **The Tools at Your Disposal:**
 
 * `query_server_logs(time_window)`: Returns credentials that accessed the servers in a 4-hour slot (e.g. `00:00-04:00`, `20:00-00:00`). The theft sits in `00:00-04:00` (12:30 AM–2:00 AM).
-* `check_badge_swipes(employee_name)`: Returns physical entry and exit times for the building.
+* `check_badge_swipes(time)`: Returns who is still badge-IN (on premises) at `HH:MM` (e.g. `01:00`).
 * `inspect_work_emails(employee_name)`: Returns flagged keywords from recent communications.
 * `check_bank_records(employee_name)`: Returns `monthly wage`, `monthly deposit`, `monthly withdraw` (numbers), and `flagged transaction` (string).
 
