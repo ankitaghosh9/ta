@@ -184,87 +184,87 @@
     ]
   },
   "badge_swipes": {
-    "Alice": [
+    "alice": [
       "08:55 IN",
       "01:49 OUT"
     ],
-    "Bob": [
+    "bob": [
       "09:10 IN",
       "17:31 OUT"
     ],
-    "Charlie": [
+    "charlie": [
       "22:58 IN",
       "07:12 OUT"
     ],
-    "Diana": [
+    "diana": [
       "09:02 IN",
       "18:49 OUT"
     ],
-    "Eve": [
+    "eve": [
       "10:12 IN",
       "23:35 OUT"
     ],
-    "Frank": [
+    "frank": [
       "17:21 IN",
       "03:17 OUT"
     ]
   },
   "emails": {
-    "Alice": [
+    "alice": [
       "Need sleep. Shipping patch before Monday."
     ],
-    "Bob": [
+    "bob": [
       "QA demands changes to the test suite."
     ],
-    "Charlie": [
+    "charlie": [
       "Night shift patrol scheduled today.",
       "Master keycard is working, confirmed by security team.",
       "Server room check completed. No unauthorized access detected."
     ],
-    "Diana": [
+    "diana": [
       "Budget review with CEO tomorrow."
     ],
-    "Eve": [
+    "eve": [
       "Downloading simulation data approved by research lead."
     ],
-    "Frank": [
+    "frank": [
       "Logged overtime hours because of understaffing.",
       "Budget cuts are making infrastructure work impossible.",
       "System update completed. No issues reported."
     ]
   },
   "bank_records": {
-    "Alice": {
+    "alice": {
       "monthly wage": 9200,
       "monthly deposit": 9200,
       "monthly withdraw": 6100,
       "flagged transaction": "none"
     },
-    "Bob": {
+    "bob": {
       "monthly wage": 4800,
       "monthly deposit": 4800,
       "monthly withdraw": 3900,
       "flagged transaction": "none"
     },
-    "Charlie": {
+    "charlie": {
       "monthly wage": 3100,
       "monthly deposit": 88100,
       "monthly withdraw": 2700,
       "flagged transaction": "RedCrest Robotics wire at 07:41 AM"
     },
-    "Diana": {
+    "diana": {
       "monthly wage": 14500,
       "monthly deposit": 14500,
       "monthly withdraw": 9800,
       "flagged transaction": "none"
     },
-    "Eve": {
+    "eve": {
       "monthly wage": 1500,
       "monthly deposit": 13500,
       "monthly withdraw": 2000,
       "flagged transaction": "University Grant Office wire at 10:12 AM"
     },
-    "Frank": {
+    "frank": {
       "monthly wage": 5600,
       "monthly deposit": 5600,
       "monthly withdraw": 5100,
@@ -272,7 +272,7 @@
     }
   },
   "ground_truth": {
-    "culprit": "Charlie",
+    "culprit": "charlie",
     "motive": "Bribed by a competitor RedCrest Robotics; low pay and resentment over being overlooked.",
     "method": "Between 12:30 AM and 2:00 AM, used master keycard access to copy prototype files (file transfer at 00:47)."
   }
