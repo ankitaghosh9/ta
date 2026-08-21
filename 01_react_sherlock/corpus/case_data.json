@@ -6,226 +6,67 @@
     "summary": "A proprietary robotics design was copied to an unauthorized external drive and sold to a competitor. Security places the theft somewhere between 12:30 AM and 2:00 AM."
   },
   "suspects": [
-    {
-      "name": "Alice",
-      "role": "Lead Developer",
-      "profile": "Brilliant but overworked, heading the new project and has universal root access to the codebase."
-    },
-    {
-      "name": "Bob",
-      "role": "Quality Assurance Engineer",
-      "profile": "Frustrated by management, snubbed for a highly anticipated promotion."
-    },
-    {
-      "name": "Charlie",
-      "role": "Facility Security Officer",
-      "profile": "Patrols the facility, has access to the server room for hardware status checks."
-    },
-    {
-      "name": "Diana",
-      "role": "Vice President of R&D Department",
-      "profile": "Aggressive negotiator, recently had a public shouting match with the CEO."
-    },
-    {
-      "name": "Eve",
-      "role": "Visiting Scholar",
-      "profile": "Temporary access, has been downloading massive simulation datasets all week."
-    },
-    {
-      "name": "Frank",
-      "role": "IT Admin",
-      "profile": "Works bizarre hours, unhappy with infrastructure issues and budget cuts."
-    }
+    {"name": "Alice", "role": "Lead Developer", "profile": "Brilliant but overworked, heading the new project and has universal root access to the codebase."},
+    {"name": "Bob", "role": "Quality Assurance Engineer", "profile": "Frustrated by management, snubbed for a highly anticipated promotion."},
+    {"name": "Charlie", "role": "Facility Security Officer", "profile": "Patrols the facility, has access to the server room for hardware status checks."},
+    {"name": "Diana", "role": "Vice President of R&D Department", "profile": "Aggressive negotiator, recently had a public shouting match with the CEO."},
+    {"name": "Eve", "role": "Visiting Scholar", "profile": "Temporary access, has been downloading massive simulation datasets all week."},
+    {"name": "Frank", "role": "IT Admin", "profile": "Works bizarre hours, unhappy with infrastructure issues and budget cuts."}
   ],
   "server_logs": {
     "08:00-12:00": [
-      {
-        "timestamp": "09:41",
-        "user": "bob",
-        "action": "test_suite_run",
-        "resource": "qa_pipeline"
-      },
-      {
-        "timestamp": "09:58",
-        "user": "diana",
-        "action": "dashboard_view",
-        "resource": "engineering_okr_board"
-      },
-      {
-        "timestamp": "10:55",
-        "user": "eve",
-        "action": "dataset_download",
-        "resource": "sim_cluster_bucket"
-      },
-      {
-        "timestamp": "11:37",
-        "user": "alice",
-        "action": "code_review",
-        "resource": "design_repo"
-      }
+      {"timestamp": "09:41", "user": "bob", "action": "test_suite_run", "resource": "qa_pipeline"},
+      {"timestamp": "09:58", "user": "diana", "action": "dashboard_view", "resource": "engineering_okr_board"},
+      {"timestamp": "10:55", "user": "eve", "action": "dataset_download", "resource": "sim_cluster_bucket"},
+      {"timestamp": "11:37", "user": "alice", "action": "code_review", "resource": "design_repo"}
     ],
     "12:00-16:00": [
-      {
-        "timestamp": "12:05",
-        "user": "diana",
-        "action": "calendar_sync",
-        "resource": "exec_calendar"
-      },
-      {
-        "timestamp": "13:44",
-        "user": "bob",
-        "action": "bug_report_update",
-        "resource": "ticket_qa-882"
-      },
-      {
-        "timestamp": "14:20",
-        "user": "eve",
-        "action": "dataset_download",
-        "resource": "sim_cluster_bucket"
-      },
-      {
-        "timestamp": "15:10",
-        "user": "alice",
-        "action": "git_push",
-        "resource": "design_repo"
-      }
+      {"timestamp": "12:05", "user": "diana", "action": "calendar_sync", "resource": "exec_calendar"},
+      {"timestamp": "13:44", "user": "bob", "action": "bug_report_update", "resource": "ticket_qa-882"},
+      {"timestamp": "14:20", "user": "eve", "action": "dataset_download", "resource": "sim_cluster_bucket"},
+      {"timestamp": "15:10", "user": "alice", "action": "git_push", "resource": "design_repo"}
     ],
     "16:00-20:00": [
-      {
-        "timestamp": "17:01",
-        "user": "bob",
-        "action": "test_suite_run",
-        "resource": "qa_pipeline"
-      },
-      {
-        "timestamp": "17:48",
-        "user": "frank",
-        "action": "access_audit",
-        "resource": "iam_console"
-      },
-      {
-        "timestamp": "18:12",
-        "user": "diana",
-        "action": "document_export",
-        "resource": "board_deck_draft"
-      },
-      {
-        "timestamp": "19:05",
-        "user": "alice",
-        "action": "git_pull",
-        "resource": "design_repo"
-      }
+      {"timestamp": "17:01", "user": "bob", "action": "test_suite_run", "resource": "qa_pipeline"},
+      {"timestamp": "17:48", "user": "frank", "action": "access_audit", "resource": "iam_console"},
+      {"timestamp": "18:12", "user": "diana", "action": "document_export", "resource": "board_deck_draft"},
+      {"timestamp": "19:05", "user": "alice", "action": "git_pull", "resource": "design_repo"}
     ],
     "20:00-00:00": [
-      {
-        "timestamp": "20:27",
-        "user": "eve",
-        "action": "dataset_download",
-        "resource": "sim_cluster_bucket"
-      },
-      {
-        "timestamp": "21:51",
-        "user": "frank",
-        "action": "system_troubleshooting",
-        "resource": "monitoring_dashboard"
-      },
-      {
-        "timestamp": "22:18",
-        "user": "alice",
-        "action": "git_pull",
-        "resource": "design_repo"
-      },
-      {
-        "timestamp": "23:02",
-        "user": "eve",
-        "action": "dataset_download",
-        "resource": "sim_cluster_bucket"
-      },
-      {
-        "timestamp": "23:10",
-        "user": "charlie",
-        "action": "server_check",
-        "resource": "hardware_status"
-      }
+      {"timestamp": "20:27", "user": "eve", "action": "dataset_download", "resource": "sim_cluster_bucket"},
+      {"timestamp": "21:51", "user": "frank", "action": "system_troubleshooting", "resource": "monitoring_dashboard"},
+      {"timestamp": "22:18", "user": "alice", "action": "git_pull", "resource": "design_repo"},
+      {"timestamp": "23:02", "user": "eve", "action": "dataset_download", "resource": "sim_cluster_bucket"},
+      {"timestamp": "23:10", "user": "charlie", "action": "server_check", "resource": "hardware_status"}
     ],
     "00:00-04:00": [
-      {
-        "timestamp": "00:12",
-        "user": "frank",
-        "action": "system_troubleshooting",
-        "resource": "monitoring_dashboard"
-      },
-      {
-        "timestamp": "00:47",
-        "user": "charlie",
-        "action": "file_transfer",
-        "resource": "design_repo"
-      },
-      {
-        "timestamp": "02:40",
-        "user": "frank",
-        "action": "backup_verify",
-        "resource": "nightly_backup_job"
-      }
+      {"timestamp": "00:12", "user": "frank", "action": "system_troubleshooting", "resource": "monitoring_dashboard"},
+      {"timestamp": "00:47", "user": "charlie", "action": "file_transfer", "resource": "design_repo"},
+      {"timestamp": "02:40", "user": "frank", "action": "backup_verify", "resource": "nightly_backup_job"}
     ],
     "04:00-08:00": [
-      {
-        "timestamp": "04:15",
-        "user": "frank",
-        "action": "automated_update",
-        "resource": "os_update_queue"
-      },
-      {
-        "timestamp": "06:42",
-        "user": "charlie",
-        "action": "server_check",
-        "resource": "hardware_status"
-      }
+      {"timestamp": "04:15", "user": "frank", "action": "automated_update", "resource": "os_update_queue"},
+      {"timestamp": "06:42", "user": "charlie", "action": "server_check", "resource": "hardware_status"}
     ]
   },
   "badge_swipes": {
-    "alice": [
-      "08:55 IN",
-      "01:49 OUT"
-    ],
-    "bob": [
-      "09:10 IN",
-      "17:31 OUT"
-    ],
-    "charlie": [
-      "22:58 IN",
-      "07:12 OUT"
-    ],
-    "diana": [
-      "09:02 IN",
-      "18:49 OUT"
-    ],
-    "eve": [
-      "10:12 IN",
-      "23:35 OUT"
-    ],
-    "frank": [
-      "17:21 IN",
-      "03:17 OUT"
-    ]
+    "alice": ["08:55 IN", "01:49 OUT"],
+    "bob": ["09:10 IN", "17:31 OUT"],
+    "charlie": ["22:58 IN", "07:12 OUT"],
+    "diana": ["09:02 IN", "18:49 OUT"],
+    "eve": ["10:12 IN", "23:35 OUT"],
+    "frank": ["17:21 IN", "03:17 OUT"]
   },
   "emails": {
-    "alice": [
-      "Need sleep. Shipping patch before Monday."
-    ],
-    "bob": [
-      "QA demands changes to the test suite."
-    ],
+    "alice": ["Need sleep. Shipping patch before Monday."],
+    "bob": ["QA demands changes to the test suite."],
     "charlie": [
       "Night shift patrol scheduled today.",
-      "Bank account details sent."
+      "Master keycard is working, confirmed by security team.",
+      "Server room check completed. No unauthorized access detected."
     ],
-    "diana": [
-      "Budget review with CEO tomorrow."
-    ],
-    "eve": [
-      "Downloading simulation data approved by research lead."
-    ],
+    "diana": ["Budget review with CEO tomorrow."],
+    "eve": ["Downloading simulation data approved by research lead."],
     "frank": [
       "Logged overtime hours because of understaffing.",
       "Budget cuts are making infrastructure work impossible.",
@@ -233,42 +74,12 @@
     ]
   },
   "bank_records": {
-    "alice": {
-      "monthly wage": 9200,
-      "monthly deposit": 9200,
-      "monthly withdraw": 6100,
-      "flagged transaction": "none"
-    },
-    "bob": {
-      "monthly wage": 4800,
-      "monthly deposit": 4800,
-      "monthly withdraw": 3900,
-      "flagged transaction": "none"
-    },
-    "charlie": {
-      "monthly wage": 3100,
-      "monthly deposit": 88100,
-      "monthly withdraw": 2700,
-      "flagged transaction": "RedCrest Robotics wire at 07:41 AM"
-    },
-    "diana": {
-      "monthly wage": 14500,
-      "monthly deposit": 14500,
-      "monthly withdraw": 9800,
-      "flagged transaction": "none"
-    },
-    "eve": {
-      "monthly wage": 1500,
-      "monthly deposit": 13500,
-      "monthly withdraw": 2000,
-      "flagged transaction": "University Grant Office wire at 10:12 AM"
-    },
-    "frank": {
-      "monthly wage": 5600,
-      "monthly deposit": 5600,
-      "monthly withdraw": 5100,
-      "flagged transaction": "none"
-    }
+    "alice": {"monthly wage": 9200, "monthly deposit": 9200, "monthly withdraw": 6100, "flagged transaction": "none"},
+    "bob": {"monthly wage": 4800, "monthly deposit": 4800, "monthly withdraw": 3900, "flagged transaction": "none"},
+    "charlie": {"monthly wage": 3100, "monthly deposit": 88100, "monthly withdraw": 2700, "flagged transaction": "RedCrest Robotics wire at 07:41 AM"},
+    "diana": {"monthly wage": 14500, "monthly deposit": 14500, "monthly withdraw": 9800, "flagged transaction": "none"},
+    "eve": {"monthly wage": 1500, "monthly deposit": 13500, "monthly withdraw": 2000, "flagged transaction": "University Grant Office wire at 10:12 AM"},
+    "frank": {"monthly wage": 5600, "monthly deposit": 5600, "monthly withdraw": 5100, "flagged transaction": "none"}
   },
   "ground_truth": {
     "culprit": "Charlie",
